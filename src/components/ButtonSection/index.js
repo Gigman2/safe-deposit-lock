@@ -14,8 +14,8 @@ const SafeButton = ({value}) => {
       null, 
       'code_timestamp', 
       1200, 
+      {action: genericAction, key: 'KEYPAD'},
       {action: processData, key: 'KEYPAD'}, 
-      {action: genericAction, key: 'PROCESS_VALUE'}
     )
     dispatch(genericAction('SET_MESSAGE',6))
   }
@@ -28,7 +28,7 @@ function ButtonSection() {
     const len = 3
     return (
       <div className='button-section'>
-        {Array(len).fill(0).map((_, i) => (<div className='button-section__row'>
+        {Array(len).fill(0).map((_, i) => (<div className='button-section__row' key={i+'a'}>
           { Array(len).fill(0).map((_, j) => <SafeButton key={(len * (len -( i+1))) + (j + 1)} value={(len * (len -( i+1))) + (j + 1)} />)}
         </div>))}
         <div className='button-section__row'>

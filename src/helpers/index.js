@@ -4,13 +4,10 @@ const initTimer = (payload, state, dispatch, resetPayload, timeoutDispatch, time
         timeoutHandle = state[timestamp_key]
         window.clearTimeout(timeoutHandle);
     }
-    timeoutHandle = window.setTimeout(() => {
-        dispatch(timeoutDispatch.action(timeoutDispatch.key, resetPayload))
-    }, time);
+    timeoutHandle = window.setTimeout(() => dispatch(timeoutDispatch.action(timeoutDispatch.key, resetPayload)), time);
     payload.timestamp = timeoutHandle
     return payload
 }
-
 
 export const triggerTimer = (key, state, dispatch, resetPayload, timestamp_key, time,callbackDispatch, timeoutDispatch) => {
     let payload = {}

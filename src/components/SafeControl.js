@@ -25,6 +25,7 @@ function SafeControl() {
     <div className='safe-panel' onClick={() => activateBacklight()}>
         <Screen />
         <Keypad />
+        <div className='s-n'>S/N: 4815162342</div>
     </div>
   );
 }
