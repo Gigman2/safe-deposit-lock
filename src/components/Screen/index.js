@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux'
 
 function Screen() {
-    const screen = useSelector(state => state.screen)
+    const state = useSelector(state => state)
     return (
-        <div className={`screen ${screen.backlight_state === 'on' ? 'screen__on' : ''}`}>
-            <p className="screen__status">{'Unlocked'}</p>
+        <div className={`screen ${state.backlight_state === 'on' ? 'screen__on' : ''}`}>
+            <p className="screen__status">{state.isLocked ? 'Locked' : 'Unlocked'}</p>
             <div className='screen__inner-box'>
-            <p className="screen__inner-box__message">{screen.message}</p>
+            <p className="screen__inner-box__message">{state.value}</p>
             </div>
         </div>
     );

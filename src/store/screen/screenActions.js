@@ -1,30 +1,18 @@
-export const unlockSafe = () => {
+/*
+  FOR ACTION THAT REQUIRES A PAYLOAD
+*/ 
+export const genericAction = (type, payload) => {
   return {
-    type: 'UNLOCKED'  }
+    type,
+    payload
+  }
 }
 
-export const lockSafe = () => {
-    return {
-      type: 'UNLOCKED'  }
-}
 
-export const addChar = (number) => {
-    return {
-      type: 'KEYPAD',
-      payload: number
-    }
-}
 
-export const setScreenMessage = (key = 0) => {
-    return {
-        type: 'SET_MESSAGE',
-        payload:key
-      }
-}
-
-export const setBacklight = (payload) => {
-    return {
-        type: 'BACKLIGHT_TRIGGERED',
-        payload 
-      }
+export function processData(payload) {
+  return async function processInput(dispatch, getState) {
+    const stateBefore = getState()
+    await setTimeout(() => console.log('Timer is now called ... ', stateBefore), 10000)
+  }
 }

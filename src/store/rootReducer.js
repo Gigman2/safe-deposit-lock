@@ -1,10 +1,6 @@
-import { combineReducers } from 'redux'
+// import { combineReducers } from 'redux'
 import screenReducer from './screen/screenReducer'
-import keypadReducer from './keypad/keypadReducer'
 
-const rootReducer = combineReducers({
-  screen: screenReducer,
-  keypad: keypadReducer
-})
+const rootReducer = screenReducer
 
 export default rootReducer

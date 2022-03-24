@@ -1,19 +1,20 @@
-
-import { setBacklight } from 'store'
-
-export const triggerBacklight = (key='on', state, dispatch) => {
-    let payload = {}
-    if(key === 'on') {
-        console.log('_KEY IS ')
-        const timeoutHandle = window.setTimeout(() => dispatch(setBacklight({state: 'off', timestamp: null})), 5000);
-        payload.timestamp = timeoutHandle
-    }else {
-        if( state.backlight_timestamp !== null) {
-            const timeoutHandle = state.backlight_timestamp
-            window.clearTimeout(timeoutHandle);
-        }
-        payload.timestamp =  window.setTimeout(dispatch(setBacklight({state: 'off', timestamp: null})), 5000);
+const initTimer = (payload, state, dispatch, resetPayload, timeoutDispatch, timestamp_key, time) => {
+    let timeoutHandle = null
+    if( state[timestamp_key] !== null) {
+        timeoutHandle = state[timestamp_key]
+        window.clearTimeout(timeoutHandle);
     }
-    payload.state = 'on'
-    dispatch(setBacklight(payload))
+    timeoutHandle = window.setTimeout(() => {
+        dispatch(timeoutDispatch.action(timeoutDispatch.key, resetPayload))
+    }, time);
+    payload.timestamp = timeoutHandle
+    return payload
+}
+
+
+export const triggerTimer = (key, state, dispatch, resetPayload, timestamp_key, time,callbackDispatch, timeoutDispatch) => {
+    let payload = {}
+    payload = initTimer(payload, state, dispatch, resetPayload, timeoutDispatch, timestamp_key, time)
+    payload.state = key
+    dispatch(callbackDispatch.action(callbackDispatch.key, payload))
 }
