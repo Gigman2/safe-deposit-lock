@@ -21,7 +21,6 @@
 
 .screen{
   height: 150px;
-  background-color: #7fffff;
   width: 100%;
   border-radius: 5px;
   margin-bottom: 30px;
@@ -30,11 +29,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #47b2b2;
   position: relative;
 }
 
-.screen__off{
-  background-color: #47b2b2;
+.screen__on{
+  background-color: #7fffff;
 }
 
 .screen__status{

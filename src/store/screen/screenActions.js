@@ -21,3 +21,10 @@ export const setScreenMessage = (key = 0) => {
         payload:key
       }
 }
+
+export const setBacklight = (payload) => {
+    return {
+        type: 'BACKLIGHT_TRIGGERED',
+        payload 
+      }
+}

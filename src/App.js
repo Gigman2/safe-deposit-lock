@@ -1,17 +1,16 @@
 import './App.css';
-import Screen from './components/Screen';
-import Keypad from './components/ButtonSection';
 import { Provider } from 'react-redux'
-import store from './store/store'
+import reduxStore from './store/store'
+import SafeControl from 'components/SafeControl';
+import { PersistGate } from 'redux-persist/integration/react'
 function App() {
   return (
-    <Provider store={store}>
+    <Provider store={reduxStore.store}> 
+    <PersistGate loading={null} persistor={reduxStore.persistor}>
       <div className="App">
-        <div className='safe-panel'>
-          <Screen />
-          <Keypad />
-        </div>
+        <SafeControl />
       </div>
+      </PersistGate>
     </Provider>
   );
 }

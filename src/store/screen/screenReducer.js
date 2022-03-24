@@ -1,11 +1,10 @@
 const messages = ['Ready',  'Locking...', 'Unlocking...', 'Service', 'Validating']
 
 const initialState = {
-    isLocked: false,
     value: '',
-    savedCode: '',
-    code: '',
-    backlight: 'off'
+    isLocked: false,
+    backlight_state: 'off',
+    backlight_timestamp: null
 }
 
 const screenReducer = (state = initialState, action) => {
@@ -18,17 +17,14 @@ const screenReducer = (state = initialState, action) => {
       ...state, 
       isLocked: true
     }
-    case 'KEYPAD': return {
-      ...state,
-      code: state.value.length < 23 ? state.value.concat(action.payload) : state.value
-    }
     case 'SET_MESSAGE': return {
       ...state,
       value: action.payload === 5 ? state.code : messages[action.payload]
     }
-    case 'SET_BACKLIGHT': return {
+    case 'BACKLIGHT_TRIGGERED': return {
       ...state,
-      backlight: action.payload
+      backlight_state: action.payload.state,
+      backlight_timestamp: action.payload.timestamp 
     }
     default: return state
   }
