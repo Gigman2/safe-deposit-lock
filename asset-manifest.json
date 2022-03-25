@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/safe-deposit-lock/static/css/main.cd0a0e62.css",
+    "main.js": "/safe-deposit-lock/static/js/main.6738df9c.js",
+    "static/js/787.eee4fba7.chunk.js": "/safe-deposit-lock/static/js/787.eee4fba7.chunk.js",
+    "index.html": "/safe-deposit-lock/index.html",
+    "main.cd0a0e62.css.map": "/safe-deposit-lock/static/css/main.cd0a0e62.css.map",
+    "main.6738df9c.js.map": "/safe-deposit-lock/static/js/main.6738df9c.js.map",
+    "787.eee4fba7.chunk.js.map": "/safe-deposit-lock/static/js/787.eee4fba7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd0a0e62.css",
+    "static/js/main.6738df9c.js"
+  ]
+}
