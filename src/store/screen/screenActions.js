@@ -10,10 +10,11 @@ export const genericAction = (type, payload) => {
 export function processData(key, payload) {
   return async function processInput(dispatch, getState) {
     const _state = getState()
-    if(_state.savedCode === ''){
-      dispatch(genericAction('START_LOCK'))
-      await setTimeout(() =>  dispatch(genericAction('LOCK_SUCCESSFUL')), 3000)
-    } else {
+    if(_state.code.length >= 6){
+      if(_state.savedCode === ''){
+          dispatch(genericAction('START_LOCK'))
+          await setTimeout(() =>  dispatch(genericAction('LOCK_SUCCESSFUL')), 3000)
+      } else {
       if(_state.code === '000000'){
         if(_state.savedCode === _state.code){
           dispatch(genericAction('START_UNLOCK'))
@@ -36,6 +37,8 @@ export function processData(key, payload) {
         }
       }
     }
+  }
+
   }
 }
 
