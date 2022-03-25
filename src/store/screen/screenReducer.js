@@ -9,7 +9,8 @@ const initialState = {
     isLocked: false,
     backlight_state: 'off',
     backlight_timestamp: null,
-    service_mode: false
+    service_mode: false,
+    sn: 4815162342
 }
 
 const screenReducer = (state = initialState, action) => {
@@ -24,8 +25,15 @@ const screenReducer = (state = initialState, action) => {
     }
     case 'SET_MESSAGE': {
       let newState = {...state}
-      if(!state.inputDisabled){
-        newState.value = action.payload === 6 ? state.code : messages[action.payload]
+      if(!state.inputDisabled && !state.service_mode){
+        if(action.payload === 6){
+          newState.value = state.code
+        }
+      }else if(state.service_mode && action.payload === 6){
+        newState.value = messages[3]
+      }
+      else{
+        newState.value = messages[action.payload]
       }
       return newState}
     case 'BACKLIGHT_TRIGGERED': return {
@@ -33,7 +41,6 @@ const screenReducer = (state = initialState, action) => {
       backlight_state: action.payload.state,
       backlight_timestamp: action.payload.timestamp 
     }
-
     case 'KEYPAD':{
       let newState = {...state}
       if(!state.inputDisabled){
@@ -89,6 +96,20 @@ const screenReducer = (state = initialState, action) => {
         value: messages[5],
         inputDisabled: false
       }
+    }
+    case 'SERVICE_MODE': {
+      let newState = {...state}
+      if(state.service_mode){
+        newState.service_mode = false
+        newState.code = ''
+        newState.value = messages[0]
+      }else{
+        newState.service_mode = true
+        newState.code = ''
+        newState.value = messages[3]
+      }
+
+      return newState
     }
 
     default: return state

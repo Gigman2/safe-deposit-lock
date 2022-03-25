@@ -1,0 +1,95 @@
+$background_or_screen_text: #434343;
+$panel_body: #7d7d7d;
+$button_text: #f3f3f3;
+$button:  #63636e;
+$screen_off: #47b2b2;
+$screen_on: #7fffff;
+
+.App {
+  text-align: center;
+  background-color:  $background_or_screen_text;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 7vh;
+  box-sizing: border-box;
+
+}
+
+.safe-panel {
+  width: 400px;
+  min-height: 200px;
+  margin: 0 auto;
+  background-color: $panel_body;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px #00000065;
+  padding: 30px 50px;
+  box-sizing: border-box;
+}
+
+.screen{
+  height: 150px;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #47b2b2;
+  position: relative;
+  &__on{
+    background-color: #7fffff;
+  }
+  &__status{
+    text-align: left;
+    margin: 0;
+    color: $background_or_screen_text;
+    font-size: 20px;
+  }
+  &__inner-box{
+    width: 100%;
+    word-wrap: break-word;
+    position: absolute;
+    left: -6px;
+    bottom: -40px;
+    &__message{
+      text-align: right;
+      font-size: 40px;
+      font-weight: 600;
+      color: $background_or_screen_text;
+    }
+  }
+}
+
+.button-section {
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  &__row{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    &__button {
+      background-color: $button;
+      height: 80px;
+      width: 80px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 4px #00000065;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 50px;
+      color: $button_text;
+      cursor: pointer;
+    }
+  }
+}
+
+.s-n{
+  margin-top: 10px;
+  text-align: right;
+  font-size: 13px;
+  margin-right: 7px;
+}
